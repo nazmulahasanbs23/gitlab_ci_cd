@@ -1,12 +1,12 @@
 ## Prerequisites
 I have used vagrant to calibrate this test installation for gitlab & gitlab runner
 
-4 GB of RAM
-4 GB of SWAP space
-4 Cores of CPU
-40 GB of HDD spaces
+* 4 GB of RAM
+* 4 GB of SWAP space
+* 4 Cores of CPU
+* 40 GB of HDD spaces
 
-## Install and configure the necessary packages/dependencies
+## Install and configure the necessary packages/dependencies on the server
 
 ```
 sudo yum install -y curl policycoreutils-python openssh-server perl
@@ -16,19 +16,19 @@ sudo systemctl start sshd
 
 ```
 
-Adding repository & package installation 
-
+## Adding repository & package installation 
+```
 curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.rpm.sh | sudo bash
-
-Browsing and login using creds
+```
+## Browsing and login using creds
 Open the browser & browse with the ip http://10.2.3.4
 A randomly generated password will be available in /etc/gitlab/initial_root_password . Use this password with username root to login. It will be stored for 24 hours at that location.
 
-GitLab runner
+## GitLab runner
 GitLab Runner is an application that works with GitLab CI/CD to run jobs in a pipeline.
 You can choose to install the GitLab Runner application on infrastructure that you own or manage. If you do, you should install GitLab Runner on a machine that’s separate from the one that hosts the GitLab instance for security and performance reasons. When you use separate machines, you can have different operating systems and tools, like Kubernetes or Docker, on each.
 
-Gitlab runner executor
+## Gitlab runner executor
 
 An executor determines the environment each job runs in.
 
@@ -38,20 +38,20 @@ These are only a few of the possible configurations. You can install GitLab Runn
 When you install GitLab Runner in a Docker container and choose the Docker executor to run your jobs, it’s sometimes referred to as a “Docker-in-Docker” configuration.
 
 
-Runner Execution flow
+## Runner Execution flow
 
 ![alt text](https://github.com/nazmulahasanbs23/gitlab_ci_cd/blob/main/gilab_with_runner.png)
 
 
-Install Gitlab runner with docker
+## Install Gitlab runner with docker
 
 Refresh the local repository & install/configure docker on the runner machine
 
-Create the Docker volume:
-
+### Create the Docker volume:
+```
 docker volume create gitlab-runner-config
-
-Start the GitLab Runner container using the volume we just created:
+```
+### Start the GitLab Runner container using the volume we just created:
 
 ```
 docker run -d --name gitlab-runner --restart always \
@@ -62,7 +62,7 @@ docker run -d --name gitlab-runner --restart always \
 
 We can create as many gitlab-runners as we want.
 
-Register gitlab runner 
+### Register gitlab runner 
 ```
 docker run --rm -it -v gitlab-runner-config:/etc/gitlab-runner gitlab/gitlab-runner:latest register
 ```
