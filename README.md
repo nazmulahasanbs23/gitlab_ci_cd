@@ -76,7 +76,7 @@ docker run --rm -it -v gitlab-runner-config:/etc/gitlab-runner gitlab/gitlab-run
 ```
 Go to the gitlab web interface (10.2.3.4 in my case) create a project & go to the settings>CI/CD>Expand the runners section. You will find the registered runner there.
 
-Run a Test CI/CD
+### Run a Test CI/CD
 
 Add a file (.gitlab-sample.yml) to the repository & click on the CI/CD pipeline on the left side (or you can turn on auto devops to initiate pipeline automatically). On Successful run, you will get the 3 stages passed successfully.
 Please find the .gitlab-sample.yml file in the resource section of the repo.
