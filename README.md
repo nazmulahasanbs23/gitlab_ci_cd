@@ -1,7 +1,9 @@
-## Prerequisites
-I have used vagrant to calibrate this test installation for gitlab & gitlab runner
+## Overview
+I have tried to install gitlab & automate the CI/CD with the gitlab runner using docker.
+To calibrate the overview I have used vagrant.
 Please find the Vagrantfile in the resource section of the repo.
 
+## Prerequisites
 I have used two servers, one for gilab & other for gitlab runner
 
 * gitlab-server ip: 10.2.3.4
