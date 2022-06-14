@@ -40,7 +40,7 @@ When you install GitLab Runner in a Docker container and choose the Docker execu
 
 Runner Execution flow
 
-![alt text]([https://github.com/[username]/[reponame]/blob/[branch]/image.jpg](https://github.com/nazmulahasanbs23/gitlab_ci_cd/blob/main/gilab_with_runner.png)?raw=true)
+![alt text]([(https://github.com/nazmulahasanbs23/gitlab_ci_cd/blob/main/gilab_with_runner.png)?raw=true)]
 
 
 Install Gitlab runner with docker
