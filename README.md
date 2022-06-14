@@ -8,11 +8,13 @@ I have used vagrant to calibrate this test installation for gitlab & gitlab runn
 
 ## Install and configure the necessary packages/dependencies
 
-
+```
 sudo yum install -y curl policycoreutils-python openssh-server perl
-# Enable OpenSSH server daemon if not enabled: sudo systemctl status sshd
+Enable OpenSSH server daemon if not enabled: sudo systemctl status sshd
 sudo systemctl enable sshd
 sudo systemctl start sshd
+
+```
 
 Adding repository & package installation 
 
@@ -30,9 +32,6 @@ Gitlab runner executor
 
 An executor determines the environment each job runs in.
 
-For example:
-
-If you want your CI/CD job to run PowerShell commands, you might install GitLab Runner on a Windows server and then register a runner that uses the shell executor.
 If you want your CI/CD job to run commands in a custom Docker container, you might install GitLab Runner on a Linux server and register a runner that uses the Docker executor.
 These are only a few of the possible configurations. You can install GitLab Runner on a virtual machine and have it use another virtual machine as an executor.
 
@@ -52,17 +51,19 @@ docker volume create gitlab-runner-config
 
 Start the GitLab Runner container using the volume we just created:
 
+```
 docker run -d --name gitlab-runner --restart always \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v gitlab-runner-config:/etc/gitlab-runner \
     gitlab/gitlab-runner:latest
+```
 
 We can create as many gitlab-runners as we want.
 
 Register gitlab runner 
-
+```
 docker run --rm -it -v gitlab-runner-config:/etc/gitlab-runner gitlab/gitlab-runner:latest register
-
+```
 Go to the gitlab web interface (10.2.3.4 in my case) create a project & go to the settings>CI/CD>Expand the runners section. You will find the registered runner there.
 
 Run a Test CI/CD
