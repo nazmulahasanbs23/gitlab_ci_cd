@@ -1,12 +1,20 @@
 ## Prerequisites
 I have used vagrant to calibrate this test installation for gitlab & gitlab runner
+Please find the Vagrantfile in the resource section of the repo.
+
+I have used two servers, one for gilab & other for gitlab runner
+
+* gitlab-server ip: 10.2.3.4
+* gitlab-runner ip: 10.2.3.5
+
+### Machine configurations are as follows:
 
 * 4 GB of RAM
 * 4 GB of SWAP space
 * 4 Cores of CPU
 * 40 GB of HDD spaces
 
-## Install and configure the necessary packages/dependencies on the server
+## Install and configure the necessary packages/dependencies on the server (10.2.3.4)
 
 ```
 sudo yum install -y curl policycoreutils-python openssh-server perl
@@ -18,7 +26,7 @@ sudo systemctl start sshd
 
 ## Adding repository & package installation 
 ```
-curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.rpm.sh | sudo bash
+curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh | sudo bash
 ```
 ## Browsing and login using creds
 Open the browser & browse with the ip http://10.2.3.4
@@ -43,7 +51,7 @@ When you install GitLab Runner in a Docker container and choose the Docker execu
 ![alt text](https://github.com/nazmulahasanbs23/gitlab_ci_cd/blob/main/gilab_with_runner.png)
 
 
-## Install Gitlab runner with docker
+## Install Gitlab runner with docker on 10.2.3.5
 
 Refresh the local repository & install/configure docker on the runner machine
 
@@ -71,4 +79,5 @@ Go to the gitlab web interface (10.2.3.4 in my case) create a project & go to th
 Run a Test CI/CD
 
 Add a file (.gitlab-sample.yml) to the repository & click on the CI/CD pipeline on the left side (or you can turn on auto devops to initiate pipeline automatically). On Successful run, you will get the 3 stages passed successfully.
+Please find the .gitlab-sample.yml file in the resource section of the repo.
 
